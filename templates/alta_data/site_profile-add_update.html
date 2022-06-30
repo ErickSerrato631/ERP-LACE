@@ -1,0 +1,70 @@
+{% extends "../principal/layout.html" %} 
+{% load widget_tweaks%}
+{% block title %} 
+LACE | Recolección - Entrega
+{% endblock %}
+{% block body %}
+<main>
+    <h4>{{ accion }}</h4>
+    <form method="post" id="regForm">
+      {% csrf_token %}
+      <!-- One "tab" for each step in the form: -->
+      <div class="tab">
+        <h4>Datos principales</h4>
+
+          <label>ID Cliente:</label>
+          {{ form.id_empresa | append_attr:"oninput:this.className = ''" }}
+
+          <label>Teléfono:</label>
+          {{ form.telefono  | append_attr:"oninput:this.className = ''" }}
+
+          <label>Email:</label>
+          {{ form.email | append_attr:"oninput:this.className = ''" }}
+
+      </div>
+
+
+      <div class="tab">
+        <h4>Datos domiciliarios</h4>
+        <label>Calle:</label>
+        {{ form.calle | append_attr:"oninput:this.className = ''" }}
+
+        <label>Número Interior:</label>
+        {{ form.noint | append_attr:"oninput:this.className = ''" }}        
+
+        <label>Número Exterior:</label>
+        {{  form.noext | append_attr:"oninput:this.className = ''" }}  
+
+        <label>Código Postal:</label>
+        {{  form.codigopostal | append_attr:"oninput:this.className = ''" }}     
+  
+        <label>Colonia:</label>
+        {{   form.colonia | append_attr:"oninput:this.className = ''" }}     
+
+        <label>Municipio/Alcaldía:</label>
+        {{  form.alcaldia_municipio | append_attr:"oninput:this.className = ''" }}
+  
+        <label>Entidad / Estado:</label>
+        {{  form.entidadfed | append_attr:"oninput:this.className = ''" }}
+
+        <label>País:</label>
+        {{  form.pais  | append_attr:"oninput:this.className = ''" }}
+
+      </div>
+
+      <div style="overflow:auto;">
+        <div style="display: flex;">
+          <button type="button" id="prevBtn" class="button1" onclick="nextPrev(-1)">Anterior</button>
+          <button type="button"  id="nextBtn" class="button1" onclick="nextPrev(1)">Siguiente</button>
+
+        </div>
+      </div>
+
+      <!-- Circles which indicates the steps of the form: -->
+      <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+        <span class="step"></span>
+      </div>
+    </form>
+</main>
+{% endblock %}

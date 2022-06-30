@@ -1,0 +1,67 @@
+{% extends "../principal/layout.html" %} 
+{% block title %} 
+LACE | Perfiles de Contacto 
+{% endblock %} 
+{% block body %}
+<main>
+  <h2>Perfiles de contacto</h2>
+
+  <section class="sombra">
+    <table id="sort">
+      <thead>
+        <tr>
+          <th>Opciones</th>
+          <th class="sort-head">Nombre</th>      
+          <th class="sort-head">Email</th> 
+          <th class="sort-head">Teléfono</th>   
+          <th class="sort-head">ID Cliente</th>
+          <th class="sort-head">Puesto</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if contacto %} 
+        {% for contacto in contacto %}
+        <tr>
+          <td>   
+            <div class="dropdown button-position">
+              <button class="button2 ">
+                <i class="material-icons">
+                  <span class="material-icons-outlined"> settings </span>
+                </i>
+                <span class="icon-text"> Opciones </span>
+              </button>
+
+              <div class="dropdown-content" style="margin-top:10rem;margin-left: 0rem;">
+                <a href="{% url 'alta_data:profile_contact_detail' contacto.id %}">Detalles</a>
+                <a href="{% url 'alta_data:profile_contact_update' contacto.id %}">Actualizar</a>
+                <a href="{% url 'alta_data:profile_contact_delete' contacto.id %}">Eliminar</a>
+              </div>
+            </div>
+          </td>
+
+          <td>{{contacto.nombre}} {{contacto.apellidopaterno}}</td>           
+          <td>{{contacto.correo}}</td>
+          <td>{{contacto.telefono}}</td>    
+          <td>{{contacto.id_empresa}}</td>            
+          <td>{{contacto.puesto}}</td>
+        </tr>
+
+        {% endfor%}
+      </tbody>
+
+      <!-- If objet_list is empty  -->
+      {% else %}
+      <p style="color: red">No tienes perfiles de contacto</p>
+      {% endif %}
+    </table>
+    <nav style="display: flex; justify-content: center">
+      <a
+        href="{% url 'alta_data:profile_contact-add' %}"
+        class="button1 button-position"
+        >Agregar perfil</a
+      >
+    </nav>
+  </section>
+</main>
+
+{% endblock %}

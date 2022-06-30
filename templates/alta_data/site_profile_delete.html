@@ -1,0 +1,45 @@
+{% extends "../principal/layout.html" %} 
+
+{% block title %}
+      LACE | Eliminar sitio
+{% endblock %}
+
+{% block body %}
+<main>
+      <form method="post">
+      {% csrf_token %}
+      <div>
+            <h3 style="color:red">¿Estás seguro que deseas borrar el perfil de {{ object.id_empresa }} ? </h3> 
+            <div class="button-position">
+                  <input type="submit" value="Eliminar"  class="button1">
+            </div>
+      </div>
+      </form>
+      <form action="{% url 'alta_data:profile_site' %}">
+            <div class="button-position">
+                  <button type="submit" class="button1">Cancelar</button>
+            </div>
+      </form>
+      <section class="sombra">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Cliente</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Alcaldía/Municipio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{sitio.id_empresa}}</td>            
+          <td>{{sitio.telefono}}</td>
+          <td>{{sitio.email}}</td>
+          <td>{{sitio.alcaldia_municipio}}</td>
+        </tr>
+      </tbody>
+    </table>
+      </section>
+</main>
+
+{% endblock %}

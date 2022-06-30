@@ -1,0 +1,78 @@
+{% extends "../principal/layout.html" %}
+{% block title %}
+      LACE | Facturación
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section class= "sombra">
+            <div class= "data-show-column">
+                
+                <h4>Vista en detalle del perfil de facturación de {{object.id_empresa}} </h4>
+            </div>
+            <div class= "data-show">
+                <table>
+                    <tr>
+                        <th class="tab-detalles">ID Cliente </th>
+                        <td class="tab-detalles">{{object.id_empresa}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">RFC</th>
+                        <td class="tab-detalles">{{object.rfc}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">CFDI</th>
+                        <td class="tab-detalles">{{object.usocfdi}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Método de pago</th>
+                        <td class="tab-detalles">{{object.metodopago}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Forma de pago</th>
+                        <td class="tab-detalles">{{object.formapago}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">E mail</th>
+                        <td class="tab-detalles">{{object.email}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Calle</th>
+                        <td class="tab-detalles">{{object.calle}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">N° Interior</th>
+                        <td class="tab-detalles">{{object.noint}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">N° Exterior</th>
+                        <td class="tab-detalles">{{object.noext}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Código Postal</th>
+                        <td class="tab-detalles">{{object.codigopostal}}</td>
+                    </tr>
+                   <tr>
+                        <th class="tab-detalles">Colonia</th>
+                        <td class="tab-detalles">{{object.colonia}}</td>
+                    </tr>
+                   <tr>
+                        <th class="tab-detalles">Alcaldía / Municipio </th>
+                        <td class="tab-detalles">{{object.alcaldia_municipio}}</td>
+                    </tr>
+                   <tr>
+                        <th class="tab-detalles">Estado / Entidad</th>
+                        <td class="tab-detalles">{{object.entidadfed}}</td>
+                    </tr>
+                   <tr>
+                        <th class="tab-detalles">País</th>
+                        <td class="tab-detalles">{{object.pais}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </section>
+        
+    </main>
+
+{% endblock %}

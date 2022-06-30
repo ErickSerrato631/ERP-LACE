@@ -1,0 +1,67 @@
+{% extends "../principal/layout.html" %} 
+{% load static %}
+{% block title %} 
+LACE | Facturación
+{% endblock %} 
+{% block body %}
+<main>
+  <h2>Perfiles de Facturación</h2>
+
+  <section class="sombra">
+    <table id="sort">
+      <thead>
+        <tr>
+          <th>Opciones</th>
+          <th class="sort-head">ID Cliente</th>
+          <th class="sort-head">RFC</th>
+          <th class="sort-head">CFDI</th>         
+          <th class="sort-head">Método de pago</th>
+          <th class="sort-head">Forma de pago</th>                  
+        </tr>
+      </thead>
+      <tbody>
+        {% if facturacion %} 
+        {% for facturacion in facturacion %}
+        <tr>
+          <td>   
+            <div class="dropdown button-position">
+              <button class="button2 ">
+                <i class="material-icons">
+                  <span class="material-icons-outlined"> settings </span>
+                </i>
+                <span class="icon-text"> Opciones </span>
+              </button>
+              <div class="dropdown-content" style="margin-top:10rem;margin-left: 0rem;">
+                <a href="{% url  'alta_data:billing_detail' facturacion.id %}">Detalles</a>
+                <a href="{% url  'alta_data:billing_update' facturacion.id %}">Actualizar</a>
+                <a href="{% url  'alta_data:billing_delete' facturacion.id %}">Eliminar</a>
+              </div>
+            </div>
+          </td>
+          <td>{{facturacion.id_empresa}}</td>            
+          <td>{{facturacion.rfc}}</td>
+          <td>{{facturacion.usocfdi}}</td>
+          <td>{{facturacion.metodopago}}</td>
+          <td>{{facturacion.formapago}}</td>                  
+        </tr>
+        {% endfor%}
+      </tbody>
+
+      <!-- If objet_list is empty  -->
+      {% else %}
+      <p style="color: red">No tienes perfiles para facturación</p>
+      {% endif %}
+    </table>
+    <nav style="display: flex; justify-content: center">
+      <a
+        href="{% url 'alta_data:billing-add' %}"
+        class="button1 button-position"
+        >Agregar facturación</a
+      >
+    </nav>
+  </section>
+</main>
+
+{% endblock %}
+
+<script src='{% static "js/principal/layout.js" %}'></script>

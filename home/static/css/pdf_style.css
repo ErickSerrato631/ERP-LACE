@@ -1,0 +1,67 @@
+  /* En el PDF hacemos un documento "horizontal" */
+  @page {
+    size: letter landscape;
+    margin: 2cm;
+  }
+
+  /* Definimos el tipo de fuente en el body */
+  body {
+    font-family: "Montserrat", sans-serif;
+    font-weight: normal;
+    font-size: 12;
+  }
+
+  .header {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* Separamos las tablas en div para usar las propiedades del Flexbox*/
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Damos formato a las tablas así como a sus elementos*/
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: black 1px solid;
+    font-weight: normal;
+    justify-self: center;
+  }
+
+  th {
+    font-size: 70%;
+    font-weight: bold;
+    border: black 1px solid;
+    height: 25;
+  }
+
+  .separacion {
+    font-size: 70%;
+    font-weight: bold;
+    border: black 1px solid;
+    height: 7;
+  }
+
+  .OS {
+    font-size: 90%;
+    font-weight: bold;
+    border: black 1px solid;
+  }
+
+  td {
+    font-size: 60%;
+    font-weight: bold;
+    border: black 1px solid;
+    height: 35;
+  }
+
+  .td-grueso {
+    border: black 1px solid;
+  }
+
+
+  

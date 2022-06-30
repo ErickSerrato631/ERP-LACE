@@ -1,0 +1,71 @@
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* DAMOS ESTRUCTURA A LAYOUT.HTML */
+.layout1 {
+  grid-area: icons-nav;
+}
+
+.layout2 {
+  grid-area: body;
+}
+.layout3 {
+  grid-area: footer;
+}
+
+.dash-board-gral {
+  display: grid;
+  grid-template-areas:
+    "icons-nav icons-nav icons-nav icons-nav icons-nav icons-nav"
+    "body      body      body      body      body      body"
+    "footer    footer    footer    footer    footer    footer";
+  grid-gap: 1rem;
+
+  padding: 1rem;
+}
+
+/* ACÁ EL FORMATO AL PIE DE PÁGINA*/
+
+.item5 {
+  color: #6a7074;
+  font-family: "Open Sans";
+  font-size: 16px;
+  line-height: 1;
+  padding: 2em 1em;
+}
+
+.item5 a {
+  color: black;
+}
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/* DAMOS ESTRUCTURA A INDEX.HTML */
+.index1 {
+  grid-area: index1;
+}
+.index2 {
+  grid-area: index2;
+}
+
+@media (min-width: 760px) {
+  .dash-board-index {
+    display: grid;
+    grid-template-areas:
+      "index1 index2";
+    grid-gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 760px) {
+  .dash-board {
+    display: grid;
+    grid-template-areas:
+      "index1"
+      "index2";
+    grid-gap: 1rem;
+    padding: 1rem;
+  }
+}

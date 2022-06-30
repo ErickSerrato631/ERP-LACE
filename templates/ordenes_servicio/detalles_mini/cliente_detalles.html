@@ -1,0 +1,157 @@
+{% load static %}
+
+{% if opcion == "cliente" %}
+    <h3>Información a detalle de: {{ object.id_empresa }}</h3>
+    <table class="tabla-detalles">
+        <tbody>
+            <tr>
+                <th>Razón Social:</th>
+                <td>{{ object.razonsocial }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de Pila:</th>
+                <td>{{ object.nombrepila }}</td>
+            </tr>
+            <tr>
+                <th>Contacto Predeterminado:</th>
+                <td>{{ object.id_contacto }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% elif opcion == "contacto" %}
+    <h3>Detalles de Contacto de: {{ object.id_empresa }}</h3>
+    <table class="tabla-detalles">
+        <tbody>
+            <tr>
+                <th>Puesto:</th>
+                <td>{{ object.puesto }}</td>
+            </tr>
+            <tr>
+                <th>Departamento:</th>
+                <td>{{ object.departamento }}</td>
+            </tr>
+            <tr>
+                <th>Nombre:</th>
+                <td>{{ object.nombre }} {{ object.apellidopaterno }} {{ object.apellidomaterno }}</td>
+            </tr>
+            <tr>
+                <th>Correo:</th>
+                <td>{{ object.correo }}</td>
+            </tr>
+            <tr>
+                <th>Télefono:</th>
+                <td>{{ object.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Extensión:</th>
+                <td>{{ object.extension }}</td>
+            </tr>
+            <tr>
+                <th>Celular:</th>
+                <td>{{ object.celular }}</td>
+            </tr>
+            <tr>
+                <th>Enviar Certificado:</th>
+                {% if object.enviar_certificado %}
+                    <td><img class="icon icon-active" src="{% static 'erp-icons/fi-checkbox.svg' %}" alt="check-icon" /></td>
+                {% else %}
+                    <td><img class="icon icon-active" src="{% static 'erp-icons/fi-x-circle.svg' %}" alt="check-icon" /></td>
+                {% endif%}
+            </tr>
+            <tr>
+                <th>Enviar Factura:</th>
+                {% if object.enviar_factura %}
+                    <td><img class="icon icon-active" src="{% static 'erp-icons/fi-checkbox.svg' %}" alt="check-icon" /></td>
+                {% else %}
+                    <td><img class="icon icon-active" src="{% static 'erp-icons/fi-x-circle.svg' %}" alt="check-icon" /></td>
+                {% endif%}
+            </tr>
+            <tr>
+                <th>Enviar Orden de Servicio:</th>
+                {% if object.enviar_orden %}
+                    <td><img class="icon icon-active" src="{% static 'erp-icons/fi-checkbox.svg' %}" alt="check-icon" /></td>
+                {% else %}
+                    <td><img class="icon icon-active" src="{% static 'erp-icons/fi-x-circle.svg' %}" alt="check-icon" /></td>
+                {% endif%}
+            </tr>
+        </tbody>
+    </table>
+{% elif opcion == "sitio" %}
+    <h3>Detalles de Sitio de: {{ object.id_empresa }}</h3>
+    <table class="tabla-detalles">
+        <tbody>
+            <tr>
+                <th>Dirección:</th>
+                <td>
+                    {{ object.calle }} {{ object.noint }} {{ object.noext }}
+                    {{ object.colonia }} {{ object.alcaldia_municipio }} {{ object.entidadfed }}
+                    {{ object.codigopostal }} {{ object.pais }}
+                </td>
+            </tr>
+            <tr>
+                <th>Teléfono:</th>
+                <td>{{ object.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Correo Electrónico:</th>
+                <td>{{ object.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% elif opcion == "facturacion" %}
+    <h3>Detalles de Facturación de: {{ object.id_empresa }}</h3>
+    <table class="tabla-detalles">
+        <tbody>
+            <tr>
+                <th>RFC:</th>
+                <td>{{ object.rfc }}</td>
+            </tr>
+            <tr>
+                <th>Correo Electrónico:</th>
+                <td>{{ object.email }}</td>
+            </tr>
+            <tr>
+                <th>Dirección:</th>
+                <td>
+                    {{ object.calle }} {{ object.noint }} {{ object.noext }}
+                    {{ object.colonia }} {{ object.alcaldia_municipio }} {{ object.entidadfed }}
+                    {{ object.codigopostal }} {{ object.pais }}
+                </td>
+            </tr>
+            <tr>
+                <th>Uso de CFDI:</th>
+                <td>{{ object.usocfdi }}</td>
+            </tr>
+            <tr>
+                <th>Método de Pago:</th>
+                <td>{{ object.metodopago }}</td>
+            </tr>
+            <tr>
+                <th>Forma de Pago:</th>
+                <td>{{ object.formapago }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% elif opcion == "certificado" %}
+    <h3>Detalles de Certificado de: {{ object.id_empresa }}</h3>
+    <table class="tabla-detalles">
+        <tbody>
+            <tr>
+                <th>Razón social:</th>
+                <td>{{ object.razonsocial }}</td>
+            </tr>
+            <tr>
+                <th>Atención con:</th>
+                <td>{{ object.atencion }}</td>
+            </tr>
+            <tr>
+                <th>Dirección:</th>
+                <td>
+                    {{ object.calle }} {{ object.noint }} {{ object.noext }}
+                    {{ object.colonia }} {{ object.alcaldia_municipio }} {{ object.entidadfed }}
+                    {{ object.codigopostal }} {{ object.pais }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endif %}

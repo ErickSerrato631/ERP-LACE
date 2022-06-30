@@ -1,0 +1,30 @@
+{% load static %}
+
+{{ InstrumentOSForm.1.images_hide }}
+<div class="vigencia-servicio-ios">
+    <label class="flex-column" for="{{ InstrumentOSForm.o.id_servicio.auto_id }}">
+        {{ InstrumentOSForm.0.id_servicio.label }}:
+        {{ InstrumentOSForm.0.id_servicio }}
+    </label>
+    
+    <label class="flex-column" for="{{ InstrumentOSForm.0.id_vigencia.auto_id }}">
+        {{ InstrumentOSForm.0.id_vigencia.label }}:
+        {{ InstrumentOSForm.0.id_vigencia }}
+    </label>
+</div>
+
+<label class="flex-column" for="{{ InstrumentOSForm.0.observaciones_ios.auto_id }}">
+    {{ InstrumentOSForm.0.observaciones_ios.label }}
+    {{ InstrumentOSForm.0.observaciones_ios }}
+</label>
+<div class="flex-column">
+    <div class="label-icon">
+        <label>Evidencias Fotográficas:</label>
+        <img class="icon icon-active" name="add-img-field" src="{% static 'erp-icons/fi-page-add.svg' %}" alt="add-image-icon" />
+    </div>
+    <label class="fotografias add-img" for="{{ InstrumentOSForm.1.imagen.auto_id }}">
+        Seleccione una imagen
+        {{ InstrumentOSForm.1.imagen }}
+        <img class="icon icon-active" src="{% static 'erp-icons/fi-camera.svg' %}" alt="camera-icon" />
+    </label>
+</div>

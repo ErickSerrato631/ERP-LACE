@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{% block title %} {% endblock %}</title>
+    {% block head %} {% endblock %}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/formularios.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/globales.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/grids.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/buttons-navs-dropdowns.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+   <link rel="stylesheet" href="{% static 'css/tablas.css' %}" />
+
+   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js" defer></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script>
+   $(document).ready(function()
+   {
+      $('#id_id_empresa').select2();
+   }
+   ) ;
+
+</script>
+
+
+
+
+   
+    {% block extra_css %} {% endblock extra_css %}
+
+
+
+
+  </head>
+
+  <body>
+    <main>
+      {% include 'principal/header.html' %}
+
+      <!-- comienza menú lateral colapsable -->
+      <div
+        id="mySidebar"
+        class="sidebar"
+        onmouseover="toggleSidebar()"
+        onmouseout="toggleSidebar()"
+      >
+        <br />
+        <a href="{% url 'home' %}">
+          <i class="material-icons"> &#xE88A; </i>
+          <span class="icon-text"> Inicio </span>
+        </a>
+        <hr class="hr-principal" />
+
+        <a href="{% url 'ordenes_servicio:OrdenServicio' %}">
+          <i class="material-icons"> send_and_archive </i>
+          <span class="icon-text">Crear OS</span>
+        </a>
+
+        <a href="{% url 'ordenes_servicio:orden_servicio_list' %}">
+          <i class="material-icons"> fact_check </i>
+          <span class="icon-text">Lista OS</span>
+        </a>
+
+        <hr class="hr-secundario" />
+      </div>
+      <!-- termina menú lateral colapsable -->
+      <div id="main">{% block body %} {% endblock body %}</div>
+
+      {% include 'principal/footer.html' %} 
+      {% block extrajs %} 
+      {% endblock extrajs %}
+    </main>
+  </body>
+
+  <script src='{% static "js/principal/layout.js" %}'></script>
+  <script src='{% static "js/foundation.min.js" %}'></script>
+  <script src='{% static "js/tablas/jquery.js" %}'></script>
+  <script src='{% static "js/tablas/jquery_dataTables.js" %}'></script>
+  <script src='{% static "js/tablas/dataTables_bootstrap.js" %}'></script>
+  <script src='{% static "js/tablas/moment.js" %}'></script>
+  <script src='{% static "js/tablas/filtro_busqueda.js" %}'></script>
+  <script src='{% static "js/formularios/formularios.js" %}'></script>
+</html>

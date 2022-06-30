@@ -1,0 +1,65 @@
+{% extends "../principal/layout.html" %} 
+{% block title %} 
+LACE | Ordenes de Servicio
+{% endblock %} 
+{% block body %}
+<main>
+  <h1>Ordenes de Servicio</h1>
+  <section class="sombra">
+    <h3>Listado de registro</h3>
+    <section class="sombra ">
+      <div class="row">
+        <div class="container"> 
+            <table id="sort">
+              <thead>
+                <tr>
+                  <th>Detalles</th>
+                  <th class="sort-head">ID Cliente</th>
+                  <th class="sort-head">ID Orden Servicio</th>
+                  <th class="sort-head">Estatus</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if ordenes %} 
+                  {% for orden in ordenes %}
+                    <tr>
+                      <td>
+                        <div class="dropdown button-position">
+                          <button class="button2 ">
+                            <i class="material-icons">
+                              <span class="material-icons-outlined"> settings </span>
+                            </i>
+                            <span class="icon-text"> Opciones </span>
+                          </button>
+                  
+                          <div class="dropdown-content" style="margin-top: 10rem;margin-left: 0rem;">
+                            <a href="{% url 'ordenes_servicio:service_order_detail' orden.id %}">Detalles</a>
+                            <a href="#">Actualizar</a>
+                            <a href="#">Eliminar</a>
+                          </div>
+                        </div>
+                      </td>
+                      <td>{{ orden.id_cliente }}</td>
+                      <td>{{ orden.id_orden }}</td>
+                      <td>{{ orden.estatus }}</td>
+                    </tr>
+                  {% endfor%}
+              </tbody>
+                <!-- If objet_list is empty  -->
+                {% else %}
+                  <p style="color: red">No tienes perfiles de clientes</p>
+                {% endif %}
+            </table>
+              <nav style="display: flex; justify-content: center">
+                <a
+                  href="{% url 'ordenes_servicio:OrdenServicio' %}"
+                  class="button1 button-position"
+                  >Crear Nueva OS</a
+                >
+              </nav>
+          </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

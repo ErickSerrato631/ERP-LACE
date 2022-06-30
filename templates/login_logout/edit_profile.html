@@ -1,0 +1,52 @@
+{% extends 'principal/layout.html' %} 
+{% block title %} 
+LACE | edita perfil 
+{% endblock %}
+{% block body %}
+<div class="flex-content-column center">
+</div>
+<h1 class="title">Actualiza tu Perfil Principal</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.errors }}
+  <div class="row">
+    <div class="column">
+      <div class="form-element">
+        <label>Nombre:</label>
+        {{ form.first_name}}
+      </div>      
+      <div class="form-element">
+        <label>Celular:</label>
+        {{ form.phone_number}}
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="form-element">
+        <label>Apellido:</label>
+        {{ form.last_name}}
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="form-element">
+        <label>Departamento:</label>
+        {{ form.id_department}}
+      </div>
+    </div>
+      <div class="column">
+        <div class="form-element" >
+          <label>Pesto:</label>
+          {{ form.workstation}}
+        </div>
+      </div>
+  </div>
+
+
+  <div class="button-position dropdown">
+    <button type="submit" class="button1" >Actualizar</button>
+  </div>
+</form>
+
+
+{% endblock %}

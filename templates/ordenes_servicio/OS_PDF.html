@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OS-PDF</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <style>
+
+       @page {
+       /*  size: letter landscape; */  /* Documento "horizontal" */
+        margin: 1.5cm 1.5cm 3.5cm 1.5cm;
+      } 
+
+
+      html {
+
+      }
+
+  body {
+    width: 100% ;
+    text-transform: uppercase;
+    height: 100%;
+    background: white;
+    color: black;
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+  }
+
+      .header {
+        text-align: center;
+        font-weight: bold;
+      }
+      /* Separamos las tablas en div para usar las propiedades del Flexbox*/
+      .contenedor {
+        display: flex;
+        flex-direction: column;
+      }
+
+  .OS {
+    font-size: 100%;
+    font-weight: bold;
+    border: black 1px solid;
+  }
+
+      /* Damos formato a las tablas así como a sus elementos*/
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: black 1px solid;
+        font-weight: normal;
+      }
+
+      th {
+        font-size: 60%;
+        font-weight: bold;
+        border: black 1px solid;
+        height: 15;
+        text-align: center;
+      }
+
+      td {
+        font-size: 60%;
+        font-weight: bold;
+        border: black 1px solid;
+        height: 20;
+        text-align: center;
+      }
+      .separacion {
+        font-size: 10%;
+        font-weight: bold;
+        border: black 1px solid;
+        height: 7;
+      }
+
+
+      .head {
+        font-size: 70%;
+        font-weight: bold;
+        border: black 1px solid;
+      }
+
+
+
+
+    </style>
+  </head>
+
+  <body>
+
+    <p class="header">
+          <img src="{% static 'images/logo.png' %}"> <br>
+      LACE LABORATORIOS DE CALIBRACI&Oacute;N S.A. DE C.V <br />
+      Sistema de gesti&oacute;n de calidad basado en NMX-EC-17025-IMNC-2018
+      <br />
+      Calibraci&oacute;n, sin&oacute;nimo de calidad.
+    </p>
+    <table>
+      <tr>
+        <th colspan="4" class="OS"> <p>ORDEN DE SERVICIO</p> </th>
+      </tr>
+    </table>
+   <br>
+    <table>
+      <tr>
+        <td>
+          <p>F. RECEPCI&Oacute;N:&nbsp;&nbsp;</p>
+        </td>
+        <td><p>F. ENTREGA:&nbsp;&nbsp;---------</p></td>
+        <td>
+        <p>
+        NÚMERO DE CLIENTE:&nbsp;&nbsp;<br> 
+        L - {{orden.id_facturacion.id_empresa.id_empresa}} - {{orden.id_facturacion.id_csucursal.id_CSucursal}}
+        </p>
+       </td>
+        <td>
+          <p>ORDEN DE SERVICIO:&nbsp;&nbsp;------------------</p>
+        </td>
+      </tr>
+    </table>
+
+<br>
+    <table>
+      <tr>
+        <th colspan="4" class="OS"> <p>DATOS DE FACTURACIÓN</p> </th>
+      </tr>
+      <tr>
+        <td><p>RAZ&Oacute;N SOCIAL:&nbsp;&nbsp;{{orden.id_facturacion.id_empresa.razonsocial}}</p></td>
+        <td colspan="2"><p>RFC:&nbsp;&nbsp;{{orden.id_facturacion.rfc}}</p></td>
+        <td><p>PERSONA:&nbsp;&nbsp;{{orden.id_facturacion.tipopersona}}</p></td>
+      </tr>
+
+      <tr>
+        <td rowspan="3"><p>DIRECCI&Oacute;N</p></td>
+        <td><p>CALLE:&nbsp;&nbsp;{{orden.id_facturacion.calle}}</p></td>
+        <td><p>N&#176; EXT:&nbsp;&nbsp;{{orden.id_facturacion.noext}}</p></td>
+        <td><p>N&#176; INT:&nbsp;&nbsp;{{orden.id_facturacion.noint}}</p></td>
+      </tr>
+
+      <tr>
+        <td><p>COL:&nbsp;&nbsp;{{orden.id_facturacion.colonia}}</p></td>
+        <td><p>ALCALD. O MUN.:&nbsp;&nbsp;{{orden.id_facturacion.alcaldia_municipio}}</p></td>
+        <td><p>C.P.:&nbsp;&nbsp;{{orden.id_facturacion.codigopostal}}</p></td>
+      </tr>
+      <tr>
+        <td><p>ESTADO:&nbsp;&nbsp;{{orden.id_facturacion.entidadfed}}</p></td>
+        <td><p>PA&Iacute;S:&nbsp;&nbsp;{{orden.id_facturacion.pais}}</p></td>
+        <td><p>EMAIL:&nbsp;&nbsp;{{orden.id_facturacion.email}}</p></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p>M&Eacute;TODO DE PAGO:&nbsp;&nbsp;{{orden.id_facturacion.metodopago}}</p>
+        </td>
+        <td><p>FORMA DE PAGO:&nbsp;&nbsp;{{orden.id_facturacion.formapago}}</p></td>
+        <td><p>USO DE CDFI:&nbsp;&nbsp;{{orden.id_facturacion.usocfdi}}</p></td>
+      </tr>
+    </table>
+<br>
+    <table>
+      <tr>
+        <th class="OS">SERVICIO</th>
+      </tr>
+    </table>
+  <br />
+
+    <table>
+        <thead>
+      <tr>
+        <th>
+            CERTIFICADO/ <br />
+            SOLICITANTE
+        </th>
+        <th><p>SITIO</p></th>
+        <th>
+          <p>
+            Servicio <br>
+            requerido
+          </p>
+        </th>
+
+        <th>
+          <p>
+            área
+          </p>
+        </th>
+        <th>
+          <p>
+            CLAVE DEL <br />
+            INSTRUMENTO
+          </p>
+        </th>
+      </tr>
+      </thead>
+
+      {% for subservicio in orden.id_subservicio.all%}
+      <tbody>
+      <tr>
+        <td>
+          <p>{{subservicio.id_certificado}}</p>
+        </td>
+        <td>
+          <p>{{subservicio.id_sitio}}</p>
+        </td>
+        <td>
+          <p>servicio </p>
+        </td>
+        <td>
+          <p>Area/magnitud </p>
+        </td>
+         
+        <td> 
+            {% for instrumento in subservicio.id_instrumento.all%}
+          <p>{{instrumento}} </p>
+            {% endfor %}
+        </td>
+      </tr>
+      </tbody>
+
+        {% endfor %}
+    </table>
+  <br />
+
+
+  
+
+
+  </body>
+</html>

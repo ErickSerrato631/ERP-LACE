@@ -1,0 +1,19 @@
+body {
+  /* fuente y grueso de fuente que puede ser 300 o 700, en el html se refiere al fonts de google en html <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,300;1,700&display=swap" 
+      rel="stylesheet"*/
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  background-color: #efefef;
+  font-size: medium;
+  /* text-transform: uppercase; */
+}
+
+
+
+.sombra {
+  -webkit-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  background-color: white;
+}

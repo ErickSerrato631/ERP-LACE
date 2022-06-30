@@ -1,0 +1,205 @@
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* AQUÍ DAREMOS FORMATO A LOS FORMULARIOS*/
+
+.flex-container {
+  display: flex;
+}
+
+.flex-content-row {
+  display: flex;
+  flex-direction: column;
+  /* padding: 0 5rem; */
+  align-items: stretch;
+  width: 100%;
+  text-align: center;
+}
+
+.flex-content-column {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.space-widgets {
+  padding: 0.5rem 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 760px) {
+  .row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 70%;
+  margin-top: 0px;
+}
+
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* FORMATO A LOS INPUTS*/
+
+/* Inputs tipo número*/
+input[type="number"] {
+  width: 100%;
+  display: block;
+  padding: 12px 10px;
+  margin: 1px 1px 1px 1px;
+  box-sizing: border-box;
+  border: 1.5px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type="number"]:focus {
+  border: 1.5px solid #555;
+}
+
+/* Inputs tipo texto*/
+ input[type="text"] {
+  width: 100%;
+  display: block;
+  padding: 12px 10px;
+  margin: 1px 1px 1px 1px;
+  box-sizing: border-box;
+  border: 1.5px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border: 3px solid #555;
+} 
+
+/* Inputs tipo seleccionable*/
+.select-item {
+  width: 100%;
+  display: block;
+  margin: 1px 1px 1px 1px;
+  box-sizing: border-box;
+  border: 1.5px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+
+.select-item:focus {
+  border: 1.5px solid #555;
+}
+
+.checkbox {
+  border: 1.5px solid #555;
+  cursor: pointer;
+    list-style-type: none;
+    height: auto;
+}
+
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* Texto de ayuda */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: none;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: rgba(68, 85, 73, 0.938);
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 5px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* Formato a nuevos formularios */
+
+  
+  #regForm {
+    background-color: #ffffff;
+    margin: 0 auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+  }
+  
+
+  
+  /* Mark input boxes that gets an error on validation: */
+  input.invalid {
+    background-color: #ffdddd;
+  }
+  
+  /* Hide all steps by default: */
+  .tab {
+    display: none;
+  }
+  
+
+  
+  #prevBtn {
+    background-color: none;
+  }
+  
+  /* Make circles that indicate the steps of the form: */
+  .step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .step.active {
+    opacity: 1;
+  }
+  
+  /* Mark the steps that are finished and valid: */
+  .step.finish {
+    background-color: #bbbbbb;
+  }

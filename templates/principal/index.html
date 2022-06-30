@@ -1,0 +1,74 @@
+{% extends "../principal/layout.html" %} 
+{% block title %} 
+LACE | Página Principal 
+{% endblock %} 
+{% block body %}
+<main>
+
+    <h1>Bienvenido {{ user.first_name }} </h1>
+    <p>
+      <script>
+        var meses = new Array(
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Octubre",
+          "Noviembre",
+          "Diciembre"
+        );
+
+        var diasSemana = new Array(
+          "Domingo",
+          "Lunes",
+          "Martes",
+          "Miércoles",
+          "Jueves",
+          "Viernes",
+          "Sábado"
+        );
+
+        var f = new Date();
+        document.write(
+          diasSemana[f.getDay()] +
+            ", " +
+            f.getDate() +
+            " de " +
+            meses[f.getMonth()] +
+            " de " +
+            f.getFullYear()
+        );
+      </script>
+    </p>
+
+<div class="dash-board-index" >
+
+    <div class="callout warning index1">
+      <h5>Avisos Generales</h5>
+      <p>Recuerda cerrar sesión al retirarte</p>
+      <li>Anuncio 1 </li>
+      <li>Anuncio 2 </li>
+      <li>Anuncio 3 </li>
+    </div>
+
+    <div class="callout primary index2">
+      <h5>  Pendientes </h5>
+      <p>Este es tu listado de pendientes en esta semana.</p>
+      <li> Pendiente 1 </li>
+      <li>Pendiente 2 </li>
+      <li>Pendiente 3 </li>
+    </div>
+
+</div>
+
+</main>
+{% endblock %} 
+
+{% block extrajs %} 
+
+{% endblock extrajs %}

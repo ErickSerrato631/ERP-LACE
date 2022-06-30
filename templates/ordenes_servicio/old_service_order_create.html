@@ -1,0 +1,306 @@
+{% extends "principal/layout.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %} 
+LACE | Orden de Servicio
+{% endblock %} 
+
+{% block head %}
+    {{ wizard.form.media }}
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .form-content {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-around;
+            margin: 1rem;
+        }
+        .form-content flex-column{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 1rem;
+        }
+        .step_2 {
+            flex-direction: column;
+            width: 50rem;
+        }
+        .field-set ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem;
+        }
+        .flex-content-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .icon-content:nth-child(1){
+            margin: 0.5rem 1rem 0.5rem 0;
+        }
+        .icon-content:nth-child(2){
+            margin: 0.5rem 0 0.5rem 1rem;
+        }
+        .icon {
+            border: none;
+            background-color: transparent;
+        }
+        .icon:hover{
+            cursor: pointer;
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+        .center{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        #minus-button {
+            display: none;
+        }
+        .colapsar {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 1rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+        .active, .colapsar:hover {
+            background-color: #555;
+        }
+        .colapsar:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+        .active:after {
+            content: "\2212";
+        }
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f1f1f1;
+        }
+        .billing-content,
+        .services-content {
+            padding-bottom: 1.5rem;
+            border-bottom: thistle solid 0.1rem;
+        }
+        .site .content,
+        .certified .content,
+        .content-element {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+        .subservice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.3rem;
+        }
+        .instrument {
+            grid-column: 1 / 3;
+        }
+        .instrument-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 90% 20%;
+            gap: 0.3rem;
+            margin: 1rem;
+        }
+        .div-button {
+            grid-column: 1 / 3;
+            justify-self: center;
+        }
+        .billing-button {
+            display: flex;
+            justify-content: center;
+        }
+        .element-head {
+            font-weight: bold;
+            text-align: right;
+        }
+        .element-data {
+            text-align: left;
+            max-width: 66.66%;
+        }
+    </style>
+{% endblock extra_css %}
+
+{% block body %}
+    <h1>Generar Orden de Servicio:</h1>
+    <div class="contenedo_formularios">
+        <form action="#" method="POST" id= "id_formulario_OS" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="paso_formulario" id= "id_paso_formulario" value= "{{ paso }}">
+            <input type="hidden" name="sub_paso_formulario" id= "id_sub_paso_formulario" value= "{{ sub_paso }}">            
+            <input type="hidden" name="image_total_form" id= "image_total_form" value= "2">
+
+            <div id="id_paso_1">
+                <p>Paso 1: Seleccione el lugar y el tipo de servicio</p>
+                <div class="ordenServicio-form">
+                    {{ form_list.OrdenServicioForm.id_cliente.label_tag }}
+                    {{ form_list.OrdenServicioForm.id_cliente }}
+                </div>
+            </div>
+            <div id="id_paso_2" style= "display:none;">
+                <input type="button" value="Agregar otro servicio" id="multiplicar">
+                {{ form_list.OrdenServicioForm.servicioContratado.label_tag }}
+                {{ form_list.OrdenServicioForm.servicioContratado}}
+            <div id= "id_paso_2_sitio"></div>
+            <div id= "id_paso_2_servicio"></div>
+            <input type="button" id= "enviar-paso-1" value= "Siguiente Paso" disabled>
+            </div>
+            <!-- <p>Paso 2: Seleccione los instrumentos, datos relacionados a certificado y facturación.</p> -->
+            <div id="id_paso_3"></div>
+            <!-- <p>Paso 3: Seleccione los servicios a realizar para los instrumentos</p> -->
+            <div id="id_paso_4"></div>
+            <!-- <p>Paso 4: Seleccione día para servicio, datos de solicitante (contacto) y observaciones generales.</p> -->
+            <div id="id_paso_5"></div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        const django_variables = {
+            token: '{{ csrf_token }}',
+            // sitiosLista: '{{ sitios_lista }}',
+        }
+    </script>
+    <script src= "{% static 'js/apps/orden_servicio.js' %}"></script>
+    <script>
+        // var optionCU = document.querySelector("#OptionCU_0").value;
+        // var control;
+
+        // if (optionCU == "0") {
+        //     control = document.querySelector("#id_service_order_create_view-current_step");
+        //     if (control.value != 0) {
+        //         document.querySelector("#control-formulario").style.display = "none";
+        //     }
+        // } else {
+        //     control = document.querySelector("#id_service_order_update_view-current_step");
+
+        //     if (control.value == "0") {
+        //         formConstructor();
+        //     } else {
+        //         document.querySelector("#control-formulario").style.display = "none";  
+        //     }
+        // }
+        // function addInput() {
+        //     var forms = document.querySelector('#id_0-TOTAL_FORMS');
+        //     var instruments = document.querySelector("#id_0-0-id_instrumento").cloneNode(true);
+            
+        //     instruments.id = "id_0-" + forms.value + "-id_instrumento";
+        //     console.log(instruments);
+            
+        //     for (var i=0; i < instruments.children.length; i++) {
+        //         var one_instr = instruments.children[i].firstChild;
+        //         one_instr.htmlFor = "id_0-" + forms.value + "-id_instrumento_" + i;
+        //         one_instr.firstChild.id = "id_0-" + forms.value + "-id_instrumento_" + i;
+        //         one_instr.firstChild.name = "0-" + forms.value + "-id_instrumento";
+        //     }
+
+        //     var div = document.createElement("div");
+        //     div.classList = "form-content field-content";
+        //     div.id = "div-target-" + forms.value;
+        //     document.querySelector("#div-tar").appendChild(div);
+
+        //     var tags = [['fieldset', 'field-set', 'legend', 'Instrumentos'], ['-id_sitio', 'Datos de Sitio'],['-id_certificado','Datos de Certificado']];
+        //     var list_elements = elementCreate(tags, forms.value, instruments);
+
+        //     var div_inner = list_elements.forEach((element,index) => {
+        //         var div_inner = document.createElement("div");
+        //         div_inner.classList = 'flex-column field-content';
+        //         if (index == 0) {
+        //             div_inner.appendChild(element);
+        //         } else {
+        //             element.forEach((item) => div_inner.appendChild(item));
+        //         }
+        //         div.appendChild(div_inner);
+        //     })
+        //     forms.value = parseInt(forms.value) + 1;
+        //     if (forms.value > 1) {
+        //         document.getElementById('minus-button').style.display= "block";
+        //     };
+        // }
+
+        // function deleteInput() {
+        //         var forms = document.querySelector('#id_0-TOTAL_FORMS');
+        //         forms.value = parseInt(forms.value) - 1;
+        //         removeDiv = '#div-target-'+forms.value;
+                
+        //         document.querySelector(removeDiv).remove();
+
+        //         if (forms.value < 2) {
+        //             document.getElementById('minus-button').style.display= "none";
+        //         };
+        // }
+        // function otherDeleteInput() {
+        //         var forms = document.querySelector('#id_0-TOTAL_FORMS');
+        //         forms.value = parseInt(forms.value) - 1;
+        //         removeDiv = '#div-target-0';
+
+        //         var div_del = document.querySelectorAll(removeDiv);
+        //         div_del[div_del.length - 1].remove();
+
+        //         if (forms.value < 2) {
+        //             document.getElementById('minus-button').style.display= "none";
+        //         };
+        // }
+
+        // function elementCreate(lista, forms_value, instruments) {
+        //     var ret_ele = [];
+
+        //     for (var i= 0; i <= lista.length - 1; i++) {
+        //         var element = lista[i];
+
+        //         if (i == 0) {
+        //             var fieldinstrument = document.createElement(element[0]);
+        //             fieldinstrument.classList = element[1];
+        //             var legend_instr = document.createElement(element[2]);
+        //             legend_instr.innerHTML = element[3];
+        //             fieldinstrument.appendChild(legend_instr);
+        //             fieldinstrument.appendChild(instruments);
+        //             new_element = fieldinstrument;
+        //         } else {
+        //             var new_input = document.querySelector("#id_0-0" + element[0]).cloneNode(true);
+        //             new_input.name = "0-" + forms_value + element[0];
+        //             new_input.id = "id_0-" + forms_value + element[0];
+        //             var new_label = document.createElement("label");
+        //             new_label.innerHTML = element[1];
+        //             new_label.htmlFor = new_input.id;
+        //             new_element = [new_label, new_input]
+        //         }
+        //         ret_ele.push(new_element);
+        //     }
+        //     return ret_ele
+        // }
+        // function formConstructor() {
+        //     var optionCU = document.querySelector("#OptionCU_0").value;
+        //     var forms = document.querySelector('#id_0-TOTAL_FORMS').value;
+
+        //     if(optionCU == "1") {
+        //         var total_forms = document.querySelector("#ServicesNum_0").value - 1;
+
+        //         if(forms > 1) {
+        //             otherDeleteInput();
+        //         }
+        //     }
+        // }
+    </script>
+{% endblock %}

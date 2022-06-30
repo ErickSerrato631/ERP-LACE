@@ -1,0 +1,54 @@
+{% extends "../principal/layout.html" %}
+{% block title %}
+      LACE | Perfil de contacto
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section class= "sombra">
+            <div class= "data-show-column">
+                
+                <h3>Vista en detalle del perfil de contacto de {{object.id_empresa}} </h3>
+            </div>
+            <div class= "data-show">
+                <table>
+                    <tr>
+                        <th class="tab-detalles">ID Cliente </th>
+                        <td class="tab-detalles">{{object.id_empresa}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Nombre completo</th>
+                        <td class="tab-detalles">{{object.nombre}} {{object.apellidopaterno}} {{object.apellidomaterno}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Puesto</th>
+                        <td class="tab-detalles">{{object.puesto}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Departamento</th>
+                        <td class="tab-detalles">{{object.departamento}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Email</th>
+                        <td class="tab-detalles">{{object.correo}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Teléfono</th>
+                        <td class="tab-detalles">{{object.telefono}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Extensión</th>
+                        <td class="tab-detalles">{{object.extension}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Celular</th>
+                        <td class="tab-detalles">{{object.celular}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </section>
+        
+    </main>
+
+{% endblock %}

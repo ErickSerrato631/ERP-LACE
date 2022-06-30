@@ -1,0 +1,46 @@
+{% extends "../principal/layout.html" %} 
+
+{% block title %}
+      LACE | Eliminar contacto
+{% endblock %}
+
+{% block body %}
+<main>
+      <form method="post">
+      {% csrf_token %}
+      <div>
+            <h3 style="color:red">¿Estás seguro que deseas borrar el perfil de {{contacto.nombre}} {{ object.departamento }} ? </h3> 
+
+            <div class="button-position">
+                  <input type="submit" value="Eliminar"  class="button1">
+            </div>
+      </div>
+      </form>
+      <form action="{% url 'alta_data:profile_contact' %}">
+            <div class="button-position">
+                  <button type="submit" class="button1">Cancelar</button>
+            </div>
+      </form>
+      <section class="sombra">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Cliente</th>
+          <th>Nombre</th>
+          <th>Puesto</th>
+          <th>Departamento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{contacto.id_empresa}}</td>
+          <td>{{contacto.nombre}} {{contacto.apellidopaterno}}</td>              
+          <td>{{contacto.puesto}}</td>
+          <td>{{contacto.departamento}}</td> 
+        </tr>
+      </tbody>
+    </table>
+      </section>
+</main>
+
+{% endblock %}

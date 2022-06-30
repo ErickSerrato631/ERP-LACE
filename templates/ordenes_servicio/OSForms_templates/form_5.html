@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="step-3-form">
+    <div class="step-1-content">
+        <div class="step-1-form">
+            {{ DatosExtraForm.id_contacto.label_tag }}
+            {{ DatosExtraForm.id_contacto}}
+        </div>
+        <div class="icons-group">
+            <img class="icon icon-active" src="{% static 'erp-icons/fi-page-add.svg' %}" alt="plus-icon" />
+            <img class="icon disabled" src="{% static 'erp-icons/fi-page-edit.svg' %}" alt="edit-icon" />
+            <img class="icon disabled" src="{% static 'erp-icons/fi-page-detail.svg' %}" alt="help-icon" />
+        </div>
+    </div>
+    <div>
+        {{ DatosExtraForm.dia_servicio.label_tag }}
+        {{ DatosExtraForm.dia_servicio }}
+    </div>
+</div>
+<div class="step-3-submit">
+    {{ DatosExtraForm.observaciones_os.label_tag }}
+    {{ DatosExtraForm.observaciones_os}}
+</div>

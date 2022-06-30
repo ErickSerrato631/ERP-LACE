@@ -1,0 +1,66 @@
+{% extends "../principal/layout.html" %}
+{% block title %}
+      LACE | Recolección entrega
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section class= "sombra">
+            <div class= "data-show-column">
+                
+                <h3>Vista en detalle del sitio de {{object.id_empresa}} </h3>
+            </div>
+            <div class= "data-show">
+                <table>
+                    <tr>
+                        <th class="tab-detalles">ID Cliente </th>
+                        <td class="tab-detalles">{{object.id_empresa}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Teléfono</th>
+                        <td class="tab-detalles">{{object.telefono}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Email</th>
+                        <td class="tab-detalles">{{object.email}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Calle</th>
+                        <td class="tab-detalles">{{object.calle}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">N° Interior</th>
+                        <td class="tab-detalles">{{object.noint}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">N° Exterior</th>
+                        <td class="tab-detalles">{{object.noext}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Código Postal</th>
+                        <td class="tab-detalles">{{object.codigopostal}}</td>
+                    </tr>
+                   <tr>
+                        <th class="tab-detalles">Colonia</th>
+                        <td class="tab-detalles">{{object.colonia}}</td>
+                    </tr>
+                   <tr>
+                        <th class="tab-detalles">Alcaldía / Municipio </th>
+                        <td class="tab-detalles">{{object.alcaldia_municipio}}</td>
+                    </tr>
+                   <tr>
+                        <th class="tab-detalles">Estado / Entidad</th>
+                        <td class="tab-detalles">{{object.entidadfed}}</td>
+                    </tr>
+                   <tr>
+                        <th class="tab-detalles">País</th>
+                        <td class="tab-detalles">{{object.pais}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </section>
+        
+    </main>
+
+{% endblock %}

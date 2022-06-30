@@ -1,0 +1,67 @@
+{% load static %}
+
+<form action="POST" id="instrumento-crear">
+    {% csrf_token %}
+    <div class="error-card"></div>
+    <h3>Crear Nuevo Instrumento:</h3>
+    <div class="form-content">
+        <div class="card-content flex-column">
+            <label for="{{ form.clave_id.auto_id }}">
+                {{ form.clave_id.label }}:
+                {{ form.clave_id }}
+            </label>
+            <label for="{{ form.nombre_instrumento.auto_id }}">
+                {{ form.nombre_instrumento.label }}:
+                {{ form.nombre_instrumento }}
+            </label>
+        </div>
+        <div class="card-content flex-column">
+            <label for="{{ form.marca.auto_id }}">
+                {{ form.marca.label }}:
+                {{ form.marca }}
+            </label>
+            <label for="{{ form.modelo.auto_id }}">
+                {{ form.modelo.label }}:
+                {{ form.modelo }}
+            </label>
+            <label for="{{ form.serie.auto_id }}">
+                {{ form.serie.label }}:
+                {{ form.serie }}
+            </label>
+            <label for="{{ form.intervalooperacion.auto_id }}">
+                {{ form.intervalooperacion.label }}:
+                {{ form.intervalooperacion }}
+            </label>
+            <label for="{{ form.alcance.auto_id }}">
+                {{ form.alcance.label }}:
+                {{ form.alcance }}
+            </label>
+            <label for="{{ form.exactitud.auto_id }}">
+                {{ form.exactitud.label }}:
+                {{ form.exactitud }}
+            </label>
+            <label for="{{ form.emt.auto_id }}">
+                {{ form.emt.label }}:
+                {{ form.emt }}
+            </label>
+            <label for="{{ form.divisionminima.auto_id }}">
+                {{ form.divisionminima.label }}:
+                {{ form.divisionminima }}
+            </label>
+        </div>
+        <div class="card-content flex-column">
+            <label for="{{ form.puntoscalibracion.auto_id }}">
+                {{ form.puntoscalibracion.label }}:
+                {{ form.puntoscalibracion }}
+            </label>
+            <label for="{{ form.areamagnitud.auto_id }}">
+                {{ form.areamagnitud.label }}:
+                {{ form.areamagnitud }}
+            </label>
+            <label for="{{ form.id_sitio.auto_id }}">
+                {{ form.id_sitio.label }}:
+                {{ form.id_sitio }}
+            </label>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,55 @@
+{% load static %}
+
+<form action="POST" id="certificado-crear">
+    {% csrf_token %}
+    <div class="error-card"></div>
+    <h3>Crear Nuevo Perfil de Certificado:</h3>
+    <div class="form-content">
+        <div class="card-content flex-column">
+            <label for="{{ form.razonsocial.auto_id }}">
+                {{ form.razonsocial.label }}:
+                {{ form.razonsocial }}
+            </label>
+            <label for="{{ form.atencion.auto_id }}">
+                {{ form.atencion.label }}:
+                {{ form.atencion }}
+            </label>
+        </div>
+        <div class="card-content flex-column">
+            <label for="{{ form.calle.auto_id }}">
+                {{ form.calle.label }}:
+                {{ form.calle }}
+            </label>
+            <div class="number-card">
+                <label for="{{ form.noext.auto_id }}">
+                    {{ form.noext.label }}:
+                    {{ form.noext }}
+                </label>
+                <label for="{{ form.noint.auto_id }}">
+                    {{ form.noint.label }}:
+                    {{ form.noint }}
+                </label>
+            </div>
+            <label for="{{ form.colonia.auto_id }}">
+                {{ form.colonia.label }}:
+                {{ form.colonia }}
+            </label>
+            <label for="{{ form.alcaldia_municipio.auto_id }}">
+                {{ form.alcaldia_municipio.label }}:
+                {{ form.alcaldia_municipio }}
+            </label>
+            <label for="{{ form.entidadfed.auto_id }}">
+                {{ form.entidadfed.label }}:
+                {{ form.entidadfed }}
+            </label>
+            <label for="{{ form.codigopostal.auto_id }}">
+                {{ form.codigopostal.label }}:
+                {{ form.codigopostal }}
+            </label>
+            <label for="{{ form.pais.auto_id }}">
+                {{ form.pais.label }}:
+                {{ form.pais }}
+            </label>
+        </div>
+    </div>
+</form>

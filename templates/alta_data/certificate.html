@@ -1,0 +1,63 @@
+{% extends "../principal/layout.html" %}
+{% load static %}
+{% block title %} 
+LACE | Perfiles de Certificado 
+{% endblock %} 
+{% block body %}
+<main>
+  <h2>Perfiles para certificado</h2>
+    <table id="sort">
+      <thead>
+        <tr>
+          <th>Opciones</th>
+          <th class="sort-head">ID Cliente</th>        
+          <th class="sort-head">Razón Social</th>
+          <th class="sort-head">Atención</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if certificado %} 
+        {% for certificado in certificado %}
+        <tr>
+          <td>   
+            <div class="dropdown button-position">
+              <button class="button2 ">
+                <i class="material-icons">
+                  <span class="material-icons-outlined"> settings </span>
+                </i>
+                <span class="icon-text"> Opciones </span>
+              </button>
+
+              <div class="dropdown-content" style="margin-top:10rem;margin-left: 0rem;">
+                <a href="{% url  'alta_data:certificate_detail' certificado.id %}">Detalles</a>
+                <a href="{% url  'alta_data:certificate_update' certificado.id %}">Actualizar</a>
+                <a href="{% url  'alta_data:certificate_delete' certificado.id %}">Eliminar</a>
+              </div>
+            </div>
+          </td>
+          <td>{{certificado.id_empresa}}</td>
+          <td>{{certificado.razonsocial}}</td>
+          <td>{{certificado.atencion}}</td>
+        </tr>
+        {% endfor%}
+      </tbody>
+
+      <!-- If objet_list is empty  -->
+      {% else %}
+      <p style="color: red">No tienes perfiles para certificado</p>
+      {% endif %}
+    </table>
+    <nav style="display: flex; justify-content: center">
+      <a
+        href="{% url 'alta_data:certificate-add' %}"
+        class="button1 button-position"
+        >Agregar certificado</a
+      >
+    </nav>
+  </section>
+</main>
+
+{% endblock %}
+
+
+<script src='{% static "js//layout.js" %}'></script>principal

@@ -1,0 +1,86 @@
+{% extends "../principal/layout.html" %} 
+{% block title %} 
+LACE | Instrumentos
+{% endblock %}
+{% block body %}
+<main>
+    <h4>{{accion}} </h4>
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="row">
+ 
+      <div class="column">
+        <div class="form-element">
+          <label>ID Cliente:</label>
+          {{form.id_empresa}}
+        </div>
+        <div class="form-element">
+          <label>ID Instrumento:</label>
+          {{ form.clave_id }}
+        </div>
+        <div class="form-element">
+          <label>Marca:</label>
+          {{ form.marca }}
+        </div>
+        <div class="form-element">
+          <label>Modelo:</label>
+          {{ form.modelo }}
+        </div>     
+
+      </div>
+
+
+      <div class="column">     
+        <div class="form-element">
+          <label>Serie:</label>
+          {{ form.serie }}
+        </div>    
+        <div class="form-element">
+          <label>Intervalo de operación:</label>
+          {{ form.intervalooperacion }}
+        </div> 
+        <div class="form-element">
+          <label>Alcance:</label>
+          {{ form.alcance }}
+        </div>
+        <div class="form-element">
+          <label>Exactitud:</label>
+          {{ form.exactitud }}
+        </div>
+        <div class="form-element">
+          <label>Error Máximo Tolerado:</label>
+          {{ form.emt }}
+        </div>
+      </div> 
+      
+      <div class="column">
+
+        <div class="form-element">
+          <label>División Mínima:</label>
+          {{form.divisionminima}}
+        </div>
+
+        <div class="form-element">
+          <label>Puntos de calibración:</label>
+          {{ form.puntoscalibracion }}
+        </div>
+        <div class="form-element">
+          <label>Sitio-Recolección-Entrega:</label>
+          {{ form.id_sitio }}
+        </div>
+
+        <div class="form-element">
+          <label>Área/Magnitud:</label>
+          {{ form.areamagnitud }}
+        </div>
+      </div>      
+    </div>
+
+
+    <div class="button-position">
+      <button type="submit" class="button1">{{boton}}</button>
+    </div>
+  </form>
+</main>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/foundation.min.css' %}" />
+
+  
+
+<div class="top-bar" style="background-color: #111">
+  <div class="top-bar-right">
+    <ul class="menu" style="background-color: #111">
+      <div class="dropdown" style="margin-right: 1rem">
+        <button class="dropbtn">
+          <i class="material-icons">
+            <span class="material-icons-outlined"> save </span>
+          </i>
+          <span class="icon-text"> Registros </span>
+        </button>
+
+        <div class="dropdown-content">
+          <a href="{% url  'alta_data:clientes' %}">Clientes</a>
+          <a href="{% url 'alta_data:certificate' %}"
+            >Perfiles de Certificado</a
+          >
+          <a href="{% url 'alta_data:billing' %}">Perfiles de Facturación</a>
+          <a href="{% url 'alta_data:profile_contact' %}"
+            >Perfiles de Contacto</a
+          >
+          <a href="{% url 'alta_data:profile_site' %}">Recolección y entrega</a>
+          <a href="{% url 'alta_data:instruments' %}">Instrumentos</a>
+        </div>
+      </div>
+
+      <div class="dropdown" style="margin-right: 3rem">
+        <button class="dropbtn">
+          <i class="material-icons">
+            <span class="material-icons-outlined"> account_circle </span>
+          </i>
+          <span class="icon-text"> Cuenta </span>
+        </button>
+        <div class="dropdown-content">
+          <a href="{% url 'users_login:edit_profile' %}">
+            Configuracion de la cuenta
+          </a>
+          <a href="{% url 'users_login:logout' %}">Cerrar sesión</a>
+        </div>
+      </div>
+    </ul>
+  </div>
+</div>

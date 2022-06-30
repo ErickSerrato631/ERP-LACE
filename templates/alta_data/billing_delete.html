@@ -1,0 +1,47 @@
+{% extends "../principal/layout.html" %} 
+
+{% block title %}
+      LACE | Eliminar facturación
+{% endblock %}
+
+{% block body %}
+<main>
+      <form method="post">
+      {% csrf_token %}
+      <div>
+            <h3 style="color:red">¿Estás seguro que deseas borrar el perfil de {{ object.rfc }} ? </h3> 
+            <div class="button-position">
+                  <input type="submit" value="Eliminar"  class="button1">
+            </div>
+      </div>
+      </form>
+      <form action="{% url 'alta_data:billing' %}">
+            <div class="button-position">
+                  <button type="submit" class="button1">Cancelar</button>
+            </div>
+      </form>
+      <section class="sombra">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Cliente</th>
+          <th>RFC</th>
+          <th>CFDI</th>         
+          <th>Método de pago</th>
+          <th>Forma de pago</th>  
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{facturacion.id_empresa}}</td>            
+          <td>{{facturacion.rfc}}</td>
+          <td>{{facturacion.usocfdi}}</td>
+          <td>{{facturacion.metodopago}}</td>
+          <td>{{facturacion.formapago}}</td>    
+        </tr>
+      </tbody>
+    </table>
+      </section>
+</main>
+
+{% endblock %}

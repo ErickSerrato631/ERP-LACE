@@ -1,0 +1,458 @@
+{% extends "principal/layout.html" %}
+{% load static %}
+
+{% block title %} 
+    LACE | Detalles
+{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .card-content {
+            background-color: #f1f1f1;
+            margin: 0.5rem 0.5rem 0rem 0.5rem;
+            border-radius: 0.3rem;
+            text-align: left;
+            font-size: small;
+        }
+        .card-content h4 {
+            font-size: 1.25rem;
+        }
+        .card-content h5 {
+            font-size: 1rem;
+            border-bottom: 0.1rem solid #cacaca;
+        }
+        .card-head {
+            grid-column: 1 / 3;
+            background-color: #3e8e41c7;
+            padding: 1rem 0rem 0.5rem 0.2rem;
+            margin: 0rem;
+        }
+        .company-content,
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            border-top: none;
+            border-right: 0.1rem solid #3e8e41c7;
+            border-bottom: 0.8rem solid #3e8e41c7;
+            border-left: 0.1rem solid #3e8e41c7;
+            padding: 0.5rem;
+        }
+        .company-content {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+        .contact-content {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+        .pd-content {
+            padding: 1rem;
+        }
+        .content-grid {
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-rows: max-content;
+        }
+        .icon {
+            width: 1rem;
+            height: 1rem;
+        }
+        .icon-active:hover {
+            cursor: pointer;
+            transform:scale(1.2);
+        }
+        .center {
+            text-align:center;
+        }
+        .colapsar {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 1rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+        .active, .colapsar:hover {
+            background-color: #555;
+        }
+        .colapsar:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+        .active:after {
+            content: "\2212";
+        }
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f1f1f1;
+        }
+        .billing-content,
+        .services-content {
+            padding-bottom: 1.5rem;
+            border-bottom: thistle solid 0.1rem;
+        }
+        .site .content,
+        .certified .content,
+        .billing .content,
+        .content-element {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-rows: max-content;
+            gap: 0.5rem;
+        }
+        .subservice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.3rem;
+        }
+        .instrument {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+        .site {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+        .certified {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+        .billing {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3
+        }
+
+        .instrument-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 90% 20%;
+            gap: 0.3rem;
+            margin: 1rem;
+        }
+        .div-button {
+            grid-column: 1 / 3;
+            justify-self: center;
+        }
+        .billing-button {
+            display: flex;
+            justify-content: center;
+        }
+        .element-head {
+            font-weight: bold;
+            text-align: right;
+        }
+        .element-data {
+            text-align: left;
+            max-width: 66.66%;
+        }
+        .element-data input {
+            margin: 0rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h3>Vista en detalle de la orden de servicio: {{ object.id_orden }}</h3>
+    <div class="card-content content-grid">
+        <h4 class="card-head">Datos de Cliente:</h4>
+        <div class="company-content">
+            <h5>Datos de la Compañía:</h5>
+            <div class="content-element">
+                <div class="element-head">ID Cliente</div>
+                <div class="element-data">{{ object.id_cliente.id_empresa }}</div>
+                <div class="element-head">Razón Social:</div>
+                <div class="element-data">{{ object.id_cliente.razonsocial}}</div>
+                <div class="element-head">Nombre de Pila:</div>
+                <div class="element-data">{{ object.id_cliente.nombrepila }}</div>
+            </div>
+        </div>
+        <div class="contact-content">
+            <h5>Datos de Contacto:</h5>
+            <div class="content-element">
+                <div class="element-head">Nombre:</div>
+                <div class="element-data">
+                    {{ object.id_contacto.nombre }} {{ object.id_contacto.apellidopaterno }} {{ object.id_contacto.apellidomaterno }}
+                </div>
+                <div class="element-head">Departamento:</div>
+                <div class="element-data">{{ object.id_contacto.departamento }}</div>
+                <div class="element-head">Puesto</div>
+                <div class="element-data">{{ object.id_contacto.puesto }}</div>
+                <div class="element-head">Correo Electrónico:</div>
+                <div class="element-data">{{ object.id_contacto.correo }}</div>
+                <div class="element-head">Telefono:</div>
+                <div class="element-data">{{ object.id_contacto.telefono }} Ext.: {{ object.id_contacto.extension }}</div>
+                <div class="element-head">Celular:</div>
+                <div class="element-data">{{ object.id_contacto.celular }}</div>
+                <div class="element-head">Enviar Factura:</div>
+                <div class="center">
+                    {% if object.id_contacto.enviar_factura %}
+                        <td><img class="icon icon-active" src="{% static 'erp-icons/fi-checkbox.svg' %}" alt="check-icon" /></td>
+                    {% else %}
+                        <td><img class="icon icon-active" src="{% static 'erp-icons/fi-x-circle.svg' %}" alt="check-icon" /></td>
+                    {% endif%}
+                </div>
+                <div class="element-head">Enviar Orden:</div>
+                <div class="center">
+                    {% if object.id_contacto.enviar_orden %}
+                        <td><img class="icon icon-active" src="{% static 'erp-icons/fi-checkbox.svg' %}" alt="check-icon" /></td>
+                    {% else %}
+                        <td><img class="icon icon-active" src="{% static 'erp-icons/fi-x-circle.svg' %}" alt="check-icon" /></td>
+                    {% endif%}
+                </div>
+                <div class="element-head">Enviar Certificado:</div>
+                <div class="center">
+                    {% if object.id_contacto.enviar_certificado %}
+                        <td><img class="icon icon-active" src="{% static 'erp-icons/fi-checkbox.svg' %}" alt="check-icon" /></td>
+                    {% else %}
+                        <td><img class="icon icon-active" src="{% static 'erp-icons/fi-x-circle.svg' %}" alt="check-icon" /></td>
+                    {% endif%}
+                </div>
+                <div class="element-head">Contacto Predeterminado:</div>
+                <div class="element-data">{{ object.id_contacto.contacto_predeterminado }}</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-content">
+        <div class="services-content">
+            <h4 class="card-head">Servicios Contratados:</h4>
+                {% if object.id_subservicio.all %}
+                    <div class="subservices">
+                        {% for subservice in object.id_subservicio.all %}
+                            <div class="subservice-content">
+                                <button type= "button" class= "colapsar">
+                                    Servicio contratado:
+                                    <span>Detalles sobre el servicio contratado.</span>
+                                </button>
+                                <div class="content subservice-grid">
+                                    <div class="instrument">
+                                        <button class="colapsar">
+                                            Instrumentos:
+                                            <span>Datos para mostrar resumen de instrumentos.</span>
+                                        </button>
+                                        <div class="content">
+                                            {% for instrument in subservice.id_instrumento.all %}
+                                                <div class="instrument-content">
+                                                    <div class="content-element">
+                                                        <div class="element-head">Clave/ID:</div>
+                                                        <div class="element-data">{{ instrument.clave_id }}</div>
+                                                        
+                                                        <div class="element-head">Área/Magnitud:</div>
+                                                        <div class="element-data">{{ instrument.areamagnitud }}</div>
+                                                        
+                                                        <div class="element-head">Marca:</div>
+                                                        <div class="element-data">{{ instrument.marca }}</div>
+                                                        
+                                                        <div class="element-head">Modelo:</div>
+                                                        <div class="element-data">{{ instrument.modelo }}</div>
+
+                                                        <div class="element-head">Serie:</div>
+                                                        <div class="element-data">{{ instrument.serie }}</div>
+
+                                                        <div class="element-head">Vigencia:</div>
+                                                        <div class="element-data">{{ instrument.vigencia }}</div>
+
+                                                        <div class="element-head">Intervalo de Operación:</div>
+                                                        <div class="element-data">{{ instrument.intervalooperacion }}</div>
+
+                                                        <div class="element-head">Alcance:</div>
+                                                        <div class="element-data">{{ instrument.alcance }}</div>
+
+                                                        <div class="element-head">Exactitud</div>
+                                                        <div class="element-data">{{ instrument.exactitud }}</div>
+
+                                                        <div class="element-head">Error Mínimo Tolerado (EMT):</div>
+                                                        <div class="element-data">{{ instrument.emt }}</div>
+
+                                                        <div class="element-head">Divsión Mínima:</div>
+                                                        <div class="element-data">{{ instrument.divisionminima }}</div>
+
+                                                        <div class="element-head">Puntos de Calibración:</div>
+                                                        <div class="element-data">{{ instrument.puntoscalibracion }}</div>
+                                                    </div>
+                                                    <div class="content-images">
+                                                        {{ instrument.observaciones }}
+                                                        {{ instrument.imagen }}
+                                                    </div>
+                                                    <div class="div-button">
+                                                        <a href="#" class= "button1">Actualizar Instrumento</a>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="site">
+                                        <button class= "colapsar">
+                                            Datos de Sitio:
+                                            <span>Datos para mostrar resumen de instrumentos.</span>
+                                        </button>
+                                        <div class="content">
+                                            <div class="element-head">Nave Industrial</div>
+                                            <div class="element-data">{{ subservice.id_sitio.naveindustrial }}</div>                                    
+                                            <div class="element-head">Dirección:</div>
+                                            <div class="element-data">{{ subservice.id_sitio.calle }},
+                                                {{ subservice.id_sitio.noext }},
+                                                {{ subservice.id_sitio.noint }},
+                                                C.P. {{ subservice.id_sitio.codigopostal }},
+                                                Col. {{ subservice.id_sitio.colonia }},
+                                                {{ subservice.id_sitio.alcaldia_municipio }},
+                                                {{ subservice.id_sitio.entidadfed }},
+                                                {{ subservice.id_sitio.pais }}.</div>                                    
+                                            <div class="element-head">Teléfono del Sitio:</div>
+                                            <div class="element-data">{{ subservice.id_sitio.telefono }}</div>                                    
+                                            <div class="element-head">Correo Electrónico del Sitio:</div>
+                                            <div class="element-data">{{ subservice.id_sitio.email }}</div>                                    
+                                            <div class="element-head">Equipo de Protección Personal:</div>
+                                            <div class="element-data">Opciones</div>
+                                            <div class="div-button">
+                                                <a href="#" class= "button1">Actualizar Sitio</a>
+                                            </div>
+                                        </div>      <!-- content -->
+                                    </div>      <!-- content-grid site -->
+                                    <div class="certified">
+                                        <!-- div.content-grid -->
+                                        <button class= "colapsar">
+                                            Datos de Certificado:
+                                            <span>Datos para mostrar resumen de Certificado.</span>
+                                        </button>
+                                        <div class="content">
+                                            <div class="element-head">Razón Social:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.razonsocial }}</div>
+                                            <div class="element-head">Solicitante:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.alias_solicitante }}</div>
+                                            <div class="element-head">Atención con:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.atencion }}</div>
+                                            <div class="element-head">Correo Electrónico:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.correo }}</div>
+                                            <div class="element-head">Número de Celular:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.celular }}</div>
+                                            <div class="element-head">Dirección:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.calle }},
+                                                {{ subservice.id_certificado.noext }},
+                                                {{ subservice.id_certificado.noint }},
+                                                C.P. {{ subservice.id_certificado.codigopostal }},
+                                                Col. {{ subservice.id_certificado.colonia }},
+                                                {{ subservice.id_certificado.alcaldia_municipio }},
+                                                {{ subservice.id_certificado.entidadfed }},
+                                                {{ subservice.id_certificado.pais }}.
+                                            </div>
+                                            <div class="div-button">
+                                                <a href="#" class= "button1">Actualizar Certificado</a>
+                                            </div>
+                                        </div>      <!-- content -->
+                                    </div>      <!-- content-grid certified -->
+                                    <div class="billing">
+                                        <button class= "colapsar">
+                                            Datos de Certificado:
+                                            <span>Datos para mostrar resumen de Certificado.</span>
+                                        </button>
+                                        <div class="content">
+                                            <div class="element-head">Razón Social:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.razonsocial }}</div>
+                                            <div class="element-head">Solicitante:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.alias_solicitante }}</div>
+                                            <div class="element-head">Atención con:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.atencion }}</div>
+                                            <div class="element-head">Correo Electrónico:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.correo }}</div>
+                                            <div class="element-head">Número de Celular:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.celular }}</div>
+                                            <div class="element-head">Dirección:</div>
+                                            <div class="element-data">{{ subservice.id_certificado.calle }},
+                                                {{ subservice.id_certificado.noext }},
+                                                {{ subservice.id_certificado.noint }},
+                                                C.P. {{ subservice.id_certificado.codigopostal }},
+                                                Col. {{ subservice.id_certificado.colonia }},
+                                                {{ subservice.id_certificado.alcaldia_municipio }},
+                                                {{ subservice.id_certificado.entidadfed }},
+                                                {{ subservice.id_certificado.pais }}.
+                                            </div>
+                                            <div class="div-button">
+                                                <a href="#" class= "button1">Actualizar Certificado</a>
+                                            </div>
+                                        </div>      <!-- content -->
+                                    </div>      <!-- content-grid certified -->
+                                </div>      <!-- content subservice-grid -->
+                            </div>      <!-- subservice-content -->
+                        {% endfor %}
+                    </div>      <!-- subservices -->
+                {% else %}
+                    <h5>No hay servicios en esta orden.</h5>
+                {% endif    %}
+                
+                
+        </div>      <!-- service-content -->
+    </div>
+    <div class="card-content">
+        <h4 class="card-head">Otros Datos:</h4>
+        <div class="pd-content">
+            <div class="content-element">
+                <div class="element-head">Fecha de Servicio:</div>
+                <div class="element-data"><input type="datetime-local" value= "{{ new_format }}" min= "2021-06-20" disabled></div>
+                <div class="element-head">Estatus:</div>
+                <div class="element-data">{{ object.estatus }}</div>
+                <div class="element-head">Observaciones:</div>
+                <div class="element-data">{{ object.observaciones_os }}</div>
+                <div class="element-head">Número de Certificado:</div>
+                <div class="element-data">{{ object.no_certificado }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="div-button">
+        <a href="#" class= "button1">Actualizar Orden de Servicio</a>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        var coll = document.getElementsByClassName("colapsar");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            
+            if (this.innerHTML.includes("Servicio contratado:")) {
+                this.classList.toggle("parent");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    content.style.padding = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.padding = "0.3rem 1rem";
+                }
+            } else {
+                var content = this.nextElementSibling;
+
+                if (content.style.maxHeight){
+                    content.style.maxHeight = null;
+                    content.style.padding = null;
+                } else {
+                    var child_size = content.scrollHeight;
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    content.style.padding = "0.3rem 1rem";
+                }
+
+                var parent_content = document.querySelectorAll(".parent");
+                let j;
+
+                for (j = 0; j < parent_content.length; j++) {
+                    var child = parent_content[j].nextElementSibling;
+                    var total_size = child.scrollHeight + child_size;
+                    child.style.maxHeight = total_size + "px";
+                }
+            }
+        });
+    }
+    </script>
+{% endblock %}

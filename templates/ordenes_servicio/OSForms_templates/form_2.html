@@ -1,0 +1,38 @@
+{% load static %}
+
+{% if SubServicioForm %}
+<div class="step-1-content">
+    <div class="step-2-form">
+        {{ SubServicioForm.id_sitio.label_tag }}
+        {{ SubServicioForm.id_sitio }}
+    </div>
+    <div class="icons-group">
+        <img class="icon icon-active" src="{% static 'erp-icons/fi-page-add.svg' %}" alt="plus-icon" />
+        <img class="icon disabled" src="{% static 'erp-icons/fi-page-edit.svg' %}" alt="edit-icon" />
+        <img class="icon disabled" src="{% static 'erp-icons/fi-page-detail.svg' %}" alt="help-icon" />
+    </div>
+</div>
+    {{ SubServicioForm.servicioContratado.label_tag }}
+    {{ SubServicioForm.servicioContratado }}
+{% elif servicioContratado %}
+    {{ servicioContratado.epp.label_tag }}
+    {{ servicioContratado.epp }}
+{% elif recoleccionEntrega %}
+    <div class="re-content">
+        <div class="re-content_form">
+            {{ recoleccionEntrega.recoleccion.label_tag }}
+            {{ recoleccionEntrega.recoleccion }}
+        </div>
+        <div class="re-content_form">
+            {{ recoleccionEntrega.entrega.label_tag }}
+            {{ recoleccionEntrega.entrega }}
+        </div>
+    </div>
+    {{ recoleccionEntrega.atencion.label_tag }}
+    {{ recoleccionEntrega.atencion }}
+    {{ recoleccionEntrega.observaciones_re.label_tag }}
+    {{ recoleccionEntrega.observaciones_re }}
+{% else %}
+    {{ terceria.razonsocial.label_tag }}
+    {{ terceria.razonsocial }}
+{% endif %}

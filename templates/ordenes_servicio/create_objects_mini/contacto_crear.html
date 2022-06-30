@@ -1,0 +1,71 @@
+{% load static %}
+
+<form action="POST" id="contacto-crear">
+    {% csrf_token %}
+    <div class="error-card"></div>
+    <h3>Crear Nuevo Contacto:</h3>
+    <div class="form-content">
+        <div class="card-content flex-column">
+            <label for="{{ form.nombre.auto_id }}">
+                {{ form.nombre.label }}:
+                {{ form.nombre }}
+            </label>
+            <label for="{{ form.apellidopaterno.auto_id }}">
+                {{ form.apellidopaterno.label }}:
+                {{ form.apellidopaterno }}
+            </label>
+            <label for="{{ form.apellidomaterno.auto_id }}">
+                {{ form.apellidomaterno.label }}:
+                {{ form.apellidomaterno }}
+            </label>
+        </div>
+        <div class="card-content flex-column">
+
+            <label for="{{ form.correo.auto_id }}">
+                {{ form.correo.label }}:
+                {{ form.correo }}
+            </label>
+            <div class="phone-card">
+                <label for="{{ form.telefono.auto_id }}">
+                    {{ form.telefono.label }}:
+                    {{ form.telefono }}
+                </label>
+                <label for="{{ form.extension.auto_id }}">
+                    {{ form.extension.label }}:
+                    {{ form.extension }}
+                </label>
+            </div>
+            <label for="{{ form.celular.auto_id }}">
+                {{ form.celular.label }}:
+                {{ form.celular }}
+            </label>
+            <label for="{{ form.departamento.auto_id }}">
+                {{ form.departamento.label }}:
+                {{ form.departamento }}
+            </label>
+            <label for="{{ form.puesto.auto_id }}">
+                {{ form.puesto.label }}:
+                {{ form.puesto }}
+            </label>
+        </div>
+        <div class="card-content margin-left">
+            <p>Opciones Especiales:</p>
+            <label for="{{ form.enviar_certificado.auto_id }}">
+                {{ form.enviar_certificado }}
+                {{ form.enviar_certificado.label }}
+            </label>
+            <label for="{{ form.enviar_factura.auto_id }}">
+                {{ form.enviar_factura }}
+                {{ form.enviar_factura.label }}
+            </label>
+            <label for="{{ form.enviar_orden.auto_id }}">
+                {{ form.enviar_orden }}
+                {{ form.enviar_orden.label }}
+            </label>
+            <label for="{{ form.conctacto_predeterminado.auto_id }}">
+                {{ form.conctacto_predeterminado }}
+                {{ form.conctacto_predeterminado.label }}
+            </label>
+        </div>
+    </div>
+</form>

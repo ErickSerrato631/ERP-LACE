@@ -1,0 +1,77 @@
+{% extends "../principal/layout.html" %} 
+{% load static %}
+{% block title %} 
+LACE | Clientes 
+{%endblock %} 
+
+{% block body %}
+<main>
+  <h2>Clientes</h2>
+  <section class="sombra ">
+<div class="row">
+<div class="container"> 
+      
+    <table id="sort">
+      <thead>
+        <tr>
+          <th>Detalles</th>
+          <th class="sort-head">ID Cliente</th>
+          <th class="sort-head">Razón Social</th>
+          <th class="sort-head">Nombre de pila</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if cliente %} 
+        {% for cliente in cliente %}
+        <tr>
+          <td>
+      <div class="dropdown button-position">
+        <button class="button2 ">
+          <i class="material-icons">
+            <span class="material-icons-outlined"> settings </span>
+          </i>
+          <span class="icon-text"> Opciones </span>
+        </button>
+
+        <div class="dropdown-content" style="margin-top: 10rem;margin-left: 0rem;">
+          <a href="{% url 'alta_data:clients_detail' cliente.id %}">Detalles</a>
+          <a href="{% url 'alta_data:clients_update' cliente.id %}">Actualizar</a>
+          <a href="{% url 'alta_data:clients_delete' cliente.id %}">Eliminar</a>
+        </div>
+      </div>
+          </td>
+          <td>{{cliente.id_empresa}}</td>
+          <td>{{cliente.razonsocial}}</td>
+          <td>{{cliente.nombrepila}}</td>
+        </tr>
+        {% endfor%}
+      </tbody>
+
+      <!-- If objet_list is empty  -->
+      {% else %}
+      <p style="color: red">No tienes perfiles de clientes</p>
+      {% endif %}
+    </table>
+    <nav style="display: flex; justify-content: center">
+      <a
+        href="{% url 'alta_data:clients-add' %}"
+        class="button1 button-position"
+        >Agregar cliente</a
+      >
+    </nav>
+          </div>
+                </div>
+  </section>
+</main>
+{% endblock %}
+
+<script>
+  console.log('probando');
+  const updateClase = document.querySelectorAll('.container').innerHTML;
+  console.log(updateClase);
+  console.log(updateClase[0]);
+  // enlaces[0].textContent = 'Cambié este texto con JavaScript y te manda a google'
+  // enlaces[0].href = "http://google.com";
+  // enlaces[0].classList.add('nueva-clase')
+  // enlaces[0].classList.remove("nueva-clase");
+</script>

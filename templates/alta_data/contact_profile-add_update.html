@@ -1,0 +1,70 @@
+{% extends "../principal/layout.html" %} 
+{% block title %} 
+LACE | Perfiles de contacto
+{% endblock %}
+{% block body %}
+<main>
+    <h4>{{ accion }}</h4>
+  <form method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="column">
+        <div class="form-element">
+          <label>ID Cliente:</label>
+          {{form.id_empresa}}
+        </div>
+        <div class="form-element">
+          <label>Puesto:</label>
+          {{ form.puesto }}
+        </div>
+        <div class="form-element">
+          <label>Departamento:</label>
+          {{ form.departamento }}
+        </div>
+      </div>
+
+      <div class="column">     
+        <div class="form-element">
+          <label>Nombres:</label>
+          {{ form.nombre}}
+        </div>
+        <div class="form-element">
+          <label>Apellido Paterno:</label>
+          {{ form.apellidopaterno }}
+        </div>     
+        <div class="form-element">
+          <label>Apellido materno:</label>
+          {{ form.apellidomaterno }}
+        </div>    
+      </div> 
+      <div class="column"> 
+        <div class="form-element">
+          <label>Email:</label>
+          {{ form.correo }}
+        </div>
+        <div class="form-element">
+          <label>Celular:</label>
+          {{ form.celular }}
+        </div>
+        <div class="row">  
+          <div class="form-element">
+            <label>Teléfono:</label>
+            {{ form.telefono }}
+          </div> 
+          <div class="form-element">
+            <label>Extensión:</label>
+            {{ form.extension }}
+          </div>
+        </div>
+      </div>    
+    </div>
+         <p>Enviar Certificado: &nbsp; {{ form.enviar_certificado}}</p> 
+          <p>Enviar Facturación: &nbsp; {{ form.enviar_factura}}</p>  
+         <p>Enviar Orden de Servicio: &nbsp; {{ form.enviar_orden}}</p>
+
+    <div class="button-position">
+      <button type="submit" class="button1">{{boton}}</button>
+    </div>
+  </form>
+</main>
+{% endblock %}

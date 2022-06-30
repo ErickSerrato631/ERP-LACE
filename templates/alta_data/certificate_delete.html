@@ -1,0 +1,39 @@
+{% extends "../principal/layout.html" %} 
+
+{% block title %}
+      LACE | Eliminar Cliente
+{% endblock %}
+
+{% block body %}
+<main>
+      <form method="post">
+      {% csrf_token %}
+      <div>
+            <h3 style="color:red">¿Estás seguro que deseas borrar el perfil de {{ object.razonsocial }} ? </h3> 
+            <div class="button-position">
+                  <input type="submit" value="Eliminar"  class="button1">
+            </div>
+      </div>
+      </form>
+
+      <section class="sombra">
+    <table>
+      <thead>
+        <tr>
+          <th>ID Cliente</th>
+          <th>Atención</th>
+          <th>Razón Social</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{object.id_empresa}}</td>
+          <td>{{object.atencion}}</td>            
+          <td>{{object.razonsocial}}</td>
+        </tr>
+      </tbody>
+    </table>
+      </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "../principal/layout.html" %}
+{% block title %}
+      LACE | Recolección entrega
+{% endblock %}
+{% block body %}
+    <main>
+        <section class= "sombra">
+            <div class= "data-show-column">
+                
+                <h3>Vista en detalle del instrumento {{object.clave_id}} </h3>
+            </div>
+            <div class= "data-show">
+                <table>
+                    <tr>
+                        <th class="tab-detalles">ID Cliente </th>
+                        <td class="tab-detalles">{{object.id_empresa}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">ID Instrumento</th>
+                        <td class="tab-detalles">{{object.clave_id}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Marca</th>
+                        <td class="tab-detalles">{{object.marca}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Modelo</th>
+                        <td class="tab-detalles">{{object.modelo}}</td>
+                    </tr>                    
+                    <tr>
+                        <th class="tab-detalles">Serie</th>
+                        <td class="tab-detalles">{{object.serie}}</td>
+                    </tr>                    
+                    <tr>
+                        <th class="tab-detalles">Intervalo de operación</th>
+                        <td class="tab-detalles">{{object.intervalooperacion}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Alcance</th>
+                        <td class="tab-detalles">{{object.alcance}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Exactitud</th>
+                        <td class="tab-detalles">{{object.exactitud}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">EMT</th>
+                        <td class="tab-detalles">{{object.emt}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">División mínima</th>
+                        <td class="tab-detalles">{{object.divisionminima}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Puntos de calibración</th>
+                        <td class="tab-detalles">{{object.puntoscalibracion}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Sitio - Recolección - Entrega</th>
+                        <td class="tab-detalles">{{object.id_sitio}}</td>
+                    </tr>
+                    <tr>
+                        <th>Área/Magnitud</th>
+                        <td>
+                            
+                            {% for magnitud in object.areamagnitud.all %}
+                            <li>
+                            {{magnitud}}
+                            </li>  
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}

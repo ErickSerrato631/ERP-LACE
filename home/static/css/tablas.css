@@ -1,0 +1,90 @@
+/* -----------------------------------------------------------------------------*/
+/* -----------------------------------------------------------------------------*/
+/* AQUÍ DAREMOS FORMATO A LAS TABLAS Y SUS ELEMENTOS*/
+
+table {
+  table-layout: relative !important;
+  width: 100% ;
+  border-collapse: collapse !important;
+  border-radius: 1rem !important;
+  background-color: #e1e4e9 !important;
+  padding: 0.5rem 0 !important;
+
+}
+
+th,
+td,tr {
+  width: 0rem !important;
+  padding: 0rem !important;
+  text-align:center !important;
+  font-size: 0.9rem;
+
+}
+
+.tab-detalles {
+  padding: 1rem !important;
+}
+
+thead {
+    background-color: #bbbaba !important;
+
+}
+
+tbody tr:nth-child(odd) {
+  background-color: white !important;
+
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e1e4e9 !important ;
+
+
+}
+
+ol {
+  display: inline-block !important;
+}
+
+ul {
+  margin-left: 0px !important;
+}
+
+
+
+    .headTab {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;;
+    }
+
+    .paginar {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+    }    
+
+.form-control {
+    height: auto;
+    margin: 0rem 0.5rem 0rem 0.5rem;
+    padding: 0rem 1rem;
+}
+
+.mostrar{
+    margin: 0.1rem 0.5rem 0rem 0.5rem;
+}
+
+.filtrar{
+    margin: 0.1rem 0.5rem 0rem 0.5rem;
+}
+
+
+label {
+    display: flex !important;
+    margin: 0;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #0a0a0a;
+}
+
+  

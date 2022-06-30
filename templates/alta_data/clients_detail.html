@@ -1,0 +1,35 @@
+{% extends "../principal/layout.html" %}
+{% block title %}
+      LACE | Detalles de Clientes
+{% endblock %}
+
+{% block body %}
+    <main>
+        <section class= "sombra">
+            <div class= "data-show-column">
+                
+                <h4>Vista en detalle del perfil del cliente {{object.id_empresa}}</h4>
+            </div>
+            <div class= "data-show">
+                <table >
+                    <tr>
+                        <th class="tab-detalles">ID Cliente</th>
+                        <td class="tab-detalles">{{object.id_empresa}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Razón Social</th>
+                        <td class="tab-detalles">{{object.razonsocial}}</td>
+                    </tr>
+                    <tr>
+                        <th class="tab-detalles">Nombre de pila</th>
+                        <td class="tab-detalles">{{object.nombrepila}}</td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </section>
+        
+    </main>
+
+{% endblock %}

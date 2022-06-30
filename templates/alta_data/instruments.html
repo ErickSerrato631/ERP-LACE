@@ -1,0 +1,68 @@
+{% extends "../principal/layout.html" %} 
+{% load static %}
+{% block title %} 
+LACE | Instrumentos
+{% endblock %} 
+{% block body %}
+<main>
+  <h2>Instrumentos</h2>
+  <section class="sombra">
+
+    <table id="sort">
+      <thead>
+        <tr>
+          <th>Opciones</th>
+          <th class="sort-head">ID Cliente</th>
+          <th class="sort-head">ID Instrumento</th>
+          <th class="sort-head">ID Sitio</th>
+          <th class="sort-head">Marca</th>
+          <th class="sort-head">Modelo</th>
+      </thead>
+      <tbody>
+        {% if object_list %} 
+        {% for object in object_list %}
+        <tr>
+          <td>
+            <div class="dropdown button-position">
+              <button class="button2 ">
+                <i class="material-icons">
+                  <span class="material-icons-outlined"> settings </span>
+                </i>
+                <span class="icon-text"> Opciones </span>
+              </button>
+
+              <div class="dropdown-content" style="margin-top:10rem;margin-left: 0rem;">
+                <a href="{% url 'alta_data:instruments_detail' object.id %}">Detalles</a>
+                <a href="{% url 'alta_data:instruments_update' object.id %}">Actualizar</a>
+                <a href="{% url 'alta_data:instruments_delete' object.id %}">Eliminar</a>
+              </div>
+            </div>
+          </td>
+          <td>{{object.id_empresa}}</td>            
+          <td>{{object.clave_id}}</td>
+          <td>{{object.id_sitio}}</td>         
+          <td>{{object.marca}}</td>
+          <td>{{object.modelo}}</td>
+        </tr>
+
+        {% endfor%}
+      </tbody>
+
+      <!-- If objet_list is empty  -->
+      {% else %}
+      <p style="color: red">No tienes perfiles de contacto</p>
+      {% endif %}
+    </table>
+    <nav style="display: flex; justify-content: center">
+      <a
+        href="{% url 'alta_data:instruments-add' %}"
+        class="button1 button-position"
+        >Agregar instrumentos</a
+      >
+    </nav>
+  </section>
+</main>
+
+{% endblock %}
+
+<script src='{% static "js//layout.js" %}'></script>principal

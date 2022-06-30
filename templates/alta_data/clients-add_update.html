@@ -1,0 +1,40 @@
+{% extends "../principal/layout.html" %} 
+{% load widget_tweaks%}
+{% block title %} 
+LACE | Clientes
+{% endblock %}
+{% block body %}
+<main>
+    <h4>{{ accion }}</h4>
+    <form method="post" id="regForm">
+      {% csrf_token %}
+      <!-- One "tab" for each step in the form: -->
+      <div class="tab">
+        <h4>Datos de la empresa</h4>
+
+          <label>ID empresa:</label>
+          {{ form.id_empresa | append_attr:"oninput:this.className = ''" }}
+
+          <label>Razón Social:</label>
+          {{ form.razonsocial| append_attr:"oninput:this.className = ''" }}
+
+          <label>Nombre de pila:</label>
+          {{ form.nombrepila | append_attr:"oninput:this.className = ''" }}
+      </div>
+
+      <div style="overflow:auto;">
+        <div style="display: flex;">
+          <button type="button" id="prevBtn" class="button1" onclick="nextPrev(-1)">Anterior</button>
+          <button type="button"  id="nextBtn" class="button1" onclick="nextPrev(1)">Siguiente</button>
+
+        </div>
+      </div>
+
+      <!-- Circles which indicates the steps of the form: -->
+      <div style="text-align:center;margin-top:40px;">
+        <span class="step"></span>
+
+      </div>
+    </form>
+</main>
+{% endblock %}

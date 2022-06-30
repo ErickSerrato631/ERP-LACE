@@ -1,0 +1,99 @@
+{% load static %}
+{% if control == "certificado" %}
+    <div class="step-1-content">
+        <div class="step-2-form">
+            {{ form.SubservicioForm2.id_certificado.label_tag }}
+            {{ form.SubservicioForm2.id_certificado }}
+        </div>
+        <div class="icons-group">
+            <img class="icon icon-active" src="{% static 'erp-icons/fi-page-add.svg' %}" alt="plus-icon" />
+            <img class="icon disabled" src="{% static 'erp-icons/fi-page-edit.svg' %}" alt="edit-icon" />
+            <img class="icon disabled" src="{% static 'erp-icons/fi-page-detail.svg' %}" alt="help-icon" />
+        </div>
+    </div>
+{% elif control == "facturacion" %}
+    <div class="step-1-content">
+        <div class="step-2-form">
+            {{ form.SubservicioForm2.id_facturacion.label_tag }}
+            {{ form.SubservicioForm2.id_facturacion }}
+        </div>
+        <div class="icons-group">
+            <img class="icon icon-active" src="{% static 'erp-icons/fi-page-add.svg' %}" alt="plus-icon" />
+            <img class="icon disabled" src="{% static 'erp-icons/fi-page-edit.svg' %}" alt="edit-icon" />
+            <img class="icon disabled" src="{% static 'erp-icons/fi-page-detail.svg' %}" alt="help-icon" />
+        </div>
+    </div>
+{% elif control == "instrumento" %}
+    <div class="instrumento">
+        <label for="{{ form.SubservicioForm2.id_instrumento.auto_id }}">Instrumentos Seleccionados:</label>
+        <div class="selected-items" id="{{ form.SubservicioForm2.id_instrumento.auto_id }}" style="background-color: #fff;"></div>
+        
+        <div class="label-icon">
+            <label for="{{ list }}">Listado de Instrumentos:</label>
+            <img class="icon icon-active" name="add-instrumento" id="id_add-instrumento" src="{% static 'erp-icons/fi-page-add.svg' %}" alt="plus-icon" />
+        </div>
+        <div class="listed-items" id="{{ list }}" style="background-color: #fff;">
+            {% for instrumento in form.SubservicioForm2.id_instrumento %}
+                <div class="item-instrument">
+                    {{ instrumento }}
+                    <img class="icon icon-active" name="edit-cliente" src="{% static 'erp-icons/fi-page-edit.svg' %}" alt="edit-icon" style="margin-left:auto"/>
+                    <img class="icon icon-active" name="help-cliente" src="{% static 'erp-icons/fi-page-detail.svg' %}" alt="help-icon"/>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% elif control == "instrumento_lista" %}
+    <div class="instrumento">
+        <label for="{{ id }}">Instrumentos Seleccionados:</label>
+        <div class="selected-items" id="{{ id }}" style="background-color: #fff;"></div>
+        
+        <div class="label-icon">
+            <label for="{{ list }}">Listado de Instrumentos:</label>
+            <img class="icon icon-active" name="add-instrumento" id="id_add-instrumento" src="{% static 'erp-icons/fi-page-add.svg' %}" alt="plus-icon" />
+        </div>
+        <div class="listed-items" id="{{ list }}" style="background-color: #fff;">
+            <table id="{{ id_table }}">
+                <colgroup>
+                    <col style="width:5%">
+                    <col style="width:15%">
+                    <col style="width:40%">
+                    <col style="width:15%">
+                    <col style="width:15%">
+                    <col style="width:10%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="sort-head">ID Instrumento</th>
+                        <th class="sort-head">ID Sitio</th>
+                        <th class="sort-head">Marca</th>
+                        <th class="sort-head">Modelo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if object_list %} 
+                        {% for object in object_list %}
+                            <tr>
+                                <td><input type="checkbox" value="{{ object.id }}" name="{{ html_name }}"></td>
+                                <td>{{object.clave_id}}</td>
+                                <td>{{object.id_sitio}}</td>         
+                                <td>{{object.marca}}</td>
+                                <td>{{object.modelo}}</td>
+                                <td>
+                                    <div class="item-instrument">
+                                        <img class="icon icon-active" name="edit-instrument" src="{% static 'erp-icons/fi-page-edit.svg' %}" alt="edit-icon" style="margin-left:auto"/>
+                                        <img class="icon icon-active" name="help-instrument" src="{% static 'erp-icons/fi-page-detail.svg' %}" alt="help-icon"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor%}
+                </tbody>
+                <!-- If objet_list is empty  -->
+                {% else %}
+                    <p style="color: red">No tienes perfiles de contacto</p>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+{% endif %}

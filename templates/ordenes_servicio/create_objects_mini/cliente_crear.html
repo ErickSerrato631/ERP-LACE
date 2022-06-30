@@ -1,0 +1,23 @@
+{% load static %}
+
+<form action="POST" id="cliente-crear">
+    {% csrf_token %}
+    <div class="error-card"></div>
+    <h3>Crear Nuevo Cliente:</h3>
+    <div class="form-content">
+        <div class="card-content flex-column">
+            <label for="{{ form.id_empresa.auto_id }}">
+                {{ form.id_empresa.label }}:
+                {{ form.id_empresa }}
+            </label>
+            <label for="{{ form.razonsocial.auto_id }}">
+                {{ form.razonsocial.label }}:
+                {{ form.razonsocial }}
+            </label>
+            <label for="{{ form.nombrepila.auto_id }}">
+                {{ form.nombrepila.label }}:
+                {{ form.nombrepila }}
+            </label>
+        </div>
+    </div>
+</form>

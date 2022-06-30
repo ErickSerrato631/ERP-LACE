@@ -1,0 +1,35 @@
+{% load static %}
+
+<!Doctype html>
+<html class="no-js" lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Se agrego el titulo de la ventana -->
+        <title>Inicio de Sesión | LACE Calibración</title>
+        <!-- normalize hace que la vista del front end sea muy similar en cualquier navegador-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'css/pre_login.css' %}"> 
+    </head>
+
+    <body >
+        <div class= "form_content sombra">
+            
+            <img class= "logo" src="{% static 'images/logo.png' %}" alt="Logo" >
+
+            <form id= "form-login" method="POST">
+                {% csrf_token %}
+                <div class= "form_content__fields_group">
+                    {{ form.username }}
+                    {{ form.password }}
+                </div>
+            </form>
+            <div class="form_content__buttons_group">
+                <button type="submit" form= "form-login" class="form_content__button"><span>Iniciar Sesión</span></button>
+            </div>
+        </div>
+    </body>
+</html>
